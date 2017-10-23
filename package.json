@@ -1,17 +1,17 @@
 {
   "name": "formater-pdf-viewer-vjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Webcomponent pdf viewer use vuejs",
   "main": "src/formater-pdf-viewer.vue",
   "preproduction": {
-	"url": "https://rawgit.com/epointal/"
+    "url": "https://rawgit.com/terresolide/"
   },
   "production": {
-     "url": "https://cdn.rawgit.com/epointal/"
+    "url": "https://cdn.rawgit.com/terresolide/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/epointal/formater-pdf-viewer-vjs.git"
+    "url": "git+https://github.com/terresolide/formater-pdf-viewer-vjs.git"
   },
   "keywords": [
     "vue.js",
@@ -22,12 +22,12 @@
   "author": "epointal",
   "license": "GNU",
   "bugs": {
-    "url": "https://github.com/epointal/formater-pdf-viewer-vjs/issues"
+    "url": "https://github.com/terresolide/formater-pdf-viewer-vjs/issues"
   },
-  "homepage": "https://github.com/epointal/formater-pdf-viewer-vjs#README",
+  "homepage": "https://github.com/terresolide/formater-pdf-viewer-vjs#README",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --hot --inline",
-	"pre": "cross-env NODE_ENV=preproduction webpack --progress --hide-modules",
+    "pre": "cross-env NODE_ENV=preproduction webpack --progress --hide-modules",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
