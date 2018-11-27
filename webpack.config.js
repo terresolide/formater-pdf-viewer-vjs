@@ -4,9 +4,7 @@ var PACKAGE = require('./package.json');
 var buildVersion = PACKAGE.version;
 var buildName = PACKAGE.name;
 var CleanWebpackPlugin = require('clean-webpack-plugin')
-var apiHost = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master";
-var preUrl = PACKAGE.preproduction.url + buildName + "/master/dist0/";
-var prodUrl = PACKAGE.production.url + buildName + "/" + buildVersion + "/dist/";
+var prodUrl = PACKAGE.production.url;
 
 
 
@@ -15,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: buildName + '.js'
+    filename: buildName + '_' + buildVersion + '.js'
   },
   module: {
     rules: [
@@ -74,32 +72,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new CleanWebpackPlugin(["dist/*.*"]),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
-}
-
-if (process.env.NODE_ENV === 'preproduction') {
-  module.exports.devtool = '#source-map';
-  module.exports.output.path =  path.resolve(__dirname, './dist0'),
-  module.exports.output.publicPath = preUrl;
-  //module.exports.output.publicPath= PACKAGE.url+ buildName +'/master/dist/';
-
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new CleanWebpackPlugin(["dist0/*.*"]),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {

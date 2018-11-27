@@ -1,13 +1,10 @@
 {
   "name": "formater-pdf-viewer-vjs",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Webcomponent pdf viewer use vuejs",
   "main": "src/formater-pdf-viewer.vue",
-  "preproduction": {
-    "url": "https://rawgit.com/terresolide/"
-  },
   "production": {
-    "url": "https://cdn.rawgit.com/terresolide/"
+    "url": "https://api.poleterresolide.fr/webcomponents/"
   },
   "repository": {
     "type": "git",
@@ -27,7 +24,6 @@
   "homepage": "https://github.com/terresolide/formater-pdf-viewer-vjs#README",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --hot --inline",
-    "pre": "cross-env NODE_ENV=preproduction webpack --progress --hide-modules",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

@@ -143,6 +143,7 @@ export default {
 }
 </script>
 <style>
+
 .formater-pdf-viewer * {
   padding: 0;
   margin: 0;
@@ -160,6 +161,7 @@ export default {
   right: 0;
   z-index: 9999;
   cursor: default;
+  margin: 0;
 }
 
 .formater-pdf-viewer .toolbarContainer {
@@ -202,9 +204,11 @@ export default {
   position: relative;
   float: left;
 }
+.formater-pdf-viewer .toolbarField.pageNumber{
+  max-height:18px;
+}
 
-
- .formater-pdf-viewer .splitToolbarButton {
+.formater-pdf-viewer .splitToolbarButton {
   margin: 0px 2px 0px 0;
   display: inline-block;
 }
