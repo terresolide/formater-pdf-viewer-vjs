@@ -25,13 +25,10 @@ Use your own repository by editing package.json in particular `name`, `version`,
 
 ``` json
   "name": "formater-pdf-viewer-vjs",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "main": "src/formater-pdf-viewer.vue",
-  "preproduction": {
-	  "url": "https://rawgit.com/terresolide/"
-  },
   "production": {
-     "url": "https://cdn.rawgit.com/terresolide/"
+     "url": "https://api.poleterresolide.fr/webcomponents/"
   },
 
 ```
@@ -42,5 +39,5 @@ Use your own repository by editing package.json in particular `name`, `version`,
 ```
 
   <formater-pdf-viewer src="url/file.pdf" lang="fr" ></formater-pdf-viewer>
-  <script src="https://cdn.rawgit.com/terresolide/formater-pdf-viewer-vjs/0.1.5/dist/formater-pdf-viewer-vjs_0.1.5gi.js"></script> 
+  <script src="https://api.poleterresolide.fr/webcomponents/formater-pdf-viewer-vjs_0.1.7.js"></script> 
 
