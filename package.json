@@ -1,10 +1,10 @@
 {
   "name": "formater-pdf-viewer-vjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webcomponent pdf viewer use vuejs",
   "main": "src/formater-pdf-viewer.vue",
   "production": {
-    "url": "https://cdn.jsdelivr.net/gh/terresolide/formater-pdf-viewer/"
+    "url": "https://cdn.jsdelivr.net/gh/terresolide/formater-pdf-viewer-vjs/"
   },
   "repository": {
     "type": "git",
