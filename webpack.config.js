@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
-  module.exports.output.publicPath = prodUrl;
+  module.exports.output.publicPath = prodUrl + buildName + '@' +buildVersion + '/dist/' + buildName + '_' + buildVersion + '.js';
   //module.exports.output.publicPath= PACKAGE.url+ buildName +'/master/dist/';
 
   // http://vue-loader.vuejs.org/en/workflow/production.html
