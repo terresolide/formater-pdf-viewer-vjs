@@ -76,24 +76,27 @@
 </template>
 
 <script>
+import FormaterPdf from './formater-pdf.vue'
 export default {
-
+  name: 'FormaterPdfViewer',
+  components: {
+    FormaterPdf
+  },
   props:{
-      src: {
-          type: String
-      },
-
-	  lang:  {
-	      type: String,
-	      default: 'fr'
-	    },
+    src: {
+      type: String
+    },
+    lang:  {
+      type: String,
+      default: 'fr'
+    },
 	  fa:{
 		  type: Boolean,
 		  default: false
 	  },
 	  rotate:{
-	      type: Number,
-	      default:0
+	     type: Number,
+	     default:0
 	  }
   },
   data () {
