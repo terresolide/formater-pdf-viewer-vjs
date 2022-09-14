@@ -20,9 +20,9 @@ Vue.use(PDFJS);*/
 //var PDFJS = require('pdfjs-dist/webpack.js');
 //var resizeSensor = require('vue-resize-sensor');
 
-import PdfComponent from './formater-pdf.vue';
+// import PdfComponent from './formater-pdf.vue';
 
-import PdfViewer from './formater-pdf-viewer.vue';
+ import PdfViewer from './formater-pdf-viewer.vue';
 
 ljs.addAliases({
 	dep: [
@@ -34,15 +34,14 @@ ljs.load('dep', function() {
 
 	
 	// le tableau des composants Aeris
-	if (!window.registredAerisElements) {
-		window.registredAerisElements = [];
-	}
+//	if (!window.registredAerisElements) {
+	//	window.registredAerisElements = [];
+//	}
 	
-	Vue.customElement('formater-pdf', PdfComponent);
-	window.registredAerisElements.push('formater-pdf');
+	// Vue.customElement('formater-pdf', PdfComponent);
+//	window.registredAerisElements.push('formater-pdf');
 	
 	Vue.customElement('formater-pdf-viewer', PdfViewer);
-    window.registredAerisElements.push('formater-pdf-viewer');
-
-})
+//    window.registredAerisElements.push('formater-pdf-viewer');
+ })
 

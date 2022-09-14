@@ -119,10 +119,11 @@ export default {
 		recordNumPages:function(event){
 		    console.log("registreNumpagses");
 		    console.log(event);
-		    this.numPages = event.detail[0];
+		    this.numPages = event;
 		},
 		progress:function(event){
-		    this.loadedRatio = event.detail[0];
+		    console.log(event)
+		    this.loadedRatio = event;
 		},
 		
 		zoomIn: function(){
