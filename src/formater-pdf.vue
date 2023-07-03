@@ -112,6 +112,7 @@ function PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, emitEvent) {
 					'}'+
 
 					''
+				console.log(win)
 				return win;
 			})
 		})
@@ -274,7 +275,7 @@ function PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, emitEvent) {
 			return;
 		}
 		
-		var loadingTask = PDFJS.getDocument(src);
+		var loadingTask = PDFJS.getDocument({url:src, withCredentials: true});
 		
 		loadingTask.onPassword = function(updatePassword, reason) {
 			
@@ -344,12 +345,7 @@ module.exports = {
 		password: {
 			type: Function,
 			default: null,
-		},
-		triggerprint:{
-		    type: Number,
-		    default:0
 		}
-
 	},
 	
 	data(){
@@ -382,9 +378,6 @@ module.exports = {
 		    this.scale0 = this.scale;
 		    this.pdf.renderPage(this.rotate, this.scale, this.tx, this.ty);
 		   // this.pdf.change(this.rotate, this.scale, this.tx, this.ty);
-		},
-		triggerprint: function(){
-		    this.print();
 		}
 	},
 	

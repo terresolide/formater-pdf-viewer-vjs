@@ -48,12 +48,13 @@
                 <a  class="toolbarButton presentationMode" :class="{ facontent: fa}" :title="$t('Full screen')" :href="src">
                   <span >{{$t('Full screen')}}</span>
                 </a>
-                <button  class="toolbarButton print hiddenMediumView" :class="{ facontent: fa}" :title="$t('Print')" @click="print += 1;">
+                <button  class="toolbarButton print hiddenMediumView" :class="{ facontent: fa}" :title="$t('Print')" @click="triggerPrint()">
                   <span >{{$t('Print')}}</span>
                 </button>
-                <a  class="toolbarButton download hiddenMediumView" :class="{ facontent: fa}" :title="$t('Download')" :href="src" download>
+                <a class="toolbarButton download hiddenMediumView" :class="{ facontent: fa}" :title="$t('Download')" :href="download || src" download>
                   <span>{{$t('Download')}}</span>
                 </a>
+               
               </div>
               <div class="toolbarViewerMiddle">
                 <div class="splitToolbarButton">
@@ -70,7 +71,7 @@
           </div>
         </div>
 		<div style="top:0;left:0;width:100%;">
-		<formater-pdf  ref="pdf" class="formater-vue-pdf" :src="src" :page="page"  :scale="scale" :rotate="rotate" :triggerPrint="print" @progress="progress" @error="error" @numPages="recordNumPages"></formater-pdf>
+		<formater-pdf  ref="pdf" class="formater-vue-pdf" :src="src" :page="page"  :scale="scale" :rotate="rotate" :trigger-print="print" @progress="progress" @error="error" @numPages="recordNumPages"></formater-pdf>
 		</div>
 	</div>
 </template>
@@ -85,6 +86,10 @@ export default {
   props:{
     src: {
       type: String
+    },
+    download: {
+      type: String,
+      default: null
     },
     lang:  {
       type: String,
@@ -105,8 +110,7 @@ export default {
 			loadedRatio: 0,
 			page: 1,
 			numPages: 0,
-			scale: 1,
-			print:0
+			scale: 1
 		}
   },
  
@@ -117,15 +121,14 @@ export default {
 		},
 		
 		recordNumPages:function(event){
-		    console.log("registreNumpagses");
-		    console.log(event);
 		    this.numPages = event;
 		},
 		progress:function(event){
-		    console.log(event)
 		    this.loadedRatio = event;
 		},
-		
+		triggerPrint () {
+		  this.$refs.pdf.print()
+		},
 		zoomIn: function(){
 		    this.scale *= 1.25;
 		   
@@ -163,7 +166,7 @@ export default {
   position: relative;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 1;
   cursor: default;
   margin: 0;
 }
