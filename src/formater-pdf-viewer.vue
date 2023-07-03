@@ -71,7 +71,7 @@
           </div>
         </div>
 		<div style="top:0;left:0;width:100%;">
-		<formater-pdf  ref="pdf" class="formater-vue-pdf" :src="src" :page="page"  :scale="scale" :rotate="rotate" :trigger-print="print" @progress="progress" @error="error" @numPages="recordNumPages"></formater-pdf>
+		<formater-pdf  ref="pdf" class="formater-vue-pdf" :src="src" :page="page"  :scale="scale" :rotate="rotate" @progress="progress" @error="error" @numPages="recordNumPages"></formater-pdf>
 		</div>
 	</div>
 </template>
