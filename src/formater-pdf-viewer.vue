@@ -45,7 +45,7 @@
                 <span  class="toolbarLabel hiddenMediumView">sur {{numPages}}</span>
               </div>
               <div class="toolbarViewerRight">
-                <a  class="toolbarButton presentationMode" :class="{ facontent: fa}" :title="$t('Full screen')" :href="src">
+                <a  class="toolbarButton presentationMode" :class="{ facontent: fa}" :title="$t('Full screen')" :href="src" target="_blank" >
                   <span >{{$t('Full screen')}}</span>
                 </a>
                 <button  class="toolbarButton print hiddenMediumView" :class="{ facontent: fa}" :title="$t('Print')" @click="triggerPrint()">
