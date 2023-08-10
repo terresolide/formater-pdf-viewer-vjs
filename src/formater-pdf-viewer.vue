@@ -1,9 +1,9 @@
 <i18n>
 {
    "en":{
-       "Previous": 		"Previous",
+       "Previous": "Previous",
        "Previous page" :"Previous page",
-       "Next": 			"Next",
+       "Next": "Next",
        "Next page": 	"Next page",
        "Page": 			"Page",
        "Full screen": 	"Full screen",

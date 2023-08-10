@@ -4,6 +4,8 @@ var PACKAGE = require('./package.json');
 var buildVersion = PACKAGE.version;
 var buildName = PACKAGE.name;
 var CleanWebpackPlugin = require('clean-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 var prodUrl = PACKAGE.production.url;
 
 
@@ -20,19 +22,30 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-        	  i18n: '@kazupon/vue-i18n-loader'
-          }
+//        options: {
+//          loaders: {
+//        	  i18n: '@kazupon/vue-i18n-loader'
+//          }
           // other vue-loader options go here
-        }
+ //       }
+      },
+       {
+        resourceQuery: /blockType=i18n/,
+        type: 'javascript/auto',
+        loader: '@intlify/vue-i18n-loader'
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-     
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
@@ -45,22 +58,24 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
+    },
+     fallback: {
+      zlib: false
     }
   },
   devServer: {
-    historyApiFallback: true,
-    noInfo: false
+    historyApiFallback: true
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: 'eval-source-map'
 }
 if (process.env.NODE_ENV === 'development') {
 	module.exports.output.filename='build.js'
 }
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
+  module.exports.devtool = 'source-map';
   module.exports.output.publicPath = prodUrl + '@' +buildVersion + '/dist/';
   //module.exports.output.publicPath= PACKAGE.url+ buildName +'/master/dist/';
 
