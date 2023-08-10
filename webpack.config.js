@@ -21,7 +21,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue-loader'
 //        options: {
 //          loaders: {
 //        	  i18n: '@kazupon/vue-i18n-loader'
@@ -29,10 +29,10 @@ module.exports = {
           // other vue-loader options go here
  //       }
       },
-       {
+        {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@intlify/vue-i18n-loader'
+        loader: '@intlify/vue-i18n-loader',
       },
       {
         test: /\.js$/,
@@ -72,6 +72,13 @@ module.exports = {
   devtool: 'eval-source-map'
 }
 if (process.env.NODE_ENV === 'development') {
+   module.exports.plugins = (module.exports.plugins || []).concat([
+//    new webpack.DefinePlugin({
+//      'process.env': 'development'
+//    }),
+    new VueLoaderPlugin()
+  ])
+  module.exports.mode = 'development'
 	module.exports.output.filename='build.js'
 }
 if (process.env.NODE_ENV === 'production') {
