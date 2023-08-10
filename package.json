@@ -1,6 +1,6 @@
 {
   "name": "formater-pdf-viewer-vjs",
-  "version": "1.0.8",
+  "version": "1.1.1",
   "description": "Webcomponent pdf viewer use vuejs",
   "main": "src/formater-pdf-viewer.vue",
   "production": {
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/terresolide/formater-pdf-viewer-vjs#README",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress "
   },
   "dependencies": {
     "pdfjs-dist": "^1.10.100",

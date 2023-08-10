@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var PACKAGE = require('./package.json');
 var buildVersion = PACKAGE.version;
 var buildName = PACKAGE.name;
-var CleanWebpackPlugin = require('clean-webpack-plugin')
+var {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 var prodUrl = PACKAGE.production.url;
@@ -82,6 +82,10 @@ if (process.env.NODE_ENV === 'development') {
 	module.exports.output.filename='build.js'
 }
 if (process.env.NODE_ENV === 'production') {
+   module.exports.plugins = (module.exports.plugins || []).concat([
+    new VueLoaderPlugin()
+  ])
+  module.exports.mode = 'production'
   module.exports.devtool = 'source-map';
   module.exports.output.publicPath = prodUrl + '@' +buildVersion + '/dist/';
   //module.exports.output.publicPath= PACKAGE.url+ buildName +'/master/dist/';
@@ -93,13 +97,15 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new CleanWebpackPlugin(["dist/*.*"]),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist']
     }),
+//    new webpack.optimize.UglifyJsPlugin({
+//      sourceMap: true,
+//      compress: {
+//        warnings: false
+//      }
+//    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
