@@ -27,7 +27,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "pdfjs-dist": "^1.7.418",
+    "pdfjs-dist": "^1.10.100",
     "vue": "^2.6.14",
     "vue-custom-element": "^3.2.14",
     "vue-i18n": "7.0.5",
