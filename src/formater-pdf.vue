@@ -24,7 +24,7 @@ module.exports = pdfjs;*/
 PDFJS.PDFJS.disableWorker = true;
 //var resizeSensor = require('vue-resize-sensor');
 //var resizeSensor = new VueResizeSensor(); 
-function PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, emitEvent) {
+function PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, emitEvent, credentials) {
 	
 	var pdfDoc = null;
 	var pdfPage = null;
@@ -275,7 +275,7 @@ function PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, emitEvent) {
 			return;
 		}
 		
-		var loadingTask = PDFJS.getDocument({url:src, withCredentials: true});
+		var loadingTask = PDFJS.getDocument({url:src, withCredentials: credentials});
 		
 		loadingTask.onPassword = function(updatePassword, reason) {
 			
@@ -345,6 +345,10 @@ module.exports = {
 		password: {
 			type: Function,
 			default: null,
+		},
+		credentials: {
+		  type: Boolean,
+		  default: false
 		}
 	},
 	
@@ -436,7 +440,7 @@ module.exports = {
 		var canvasElt = this.$el.childNodes[0];
 		var annotationLayerElt = this.$el.childNodes[1];
 	
-		 this.pdf = new PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, this.$emit.bind(this));
+		 this.pdf = new PDFJSWrapper(PDFJS, canvasElt, annotationLayerElt, this.$emit.bind(this), this.credentials);
 		
 		this.$on('loaded', function() {
 		   
